@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">IntentTest</string>
+    <string name="first">用Intent启动无结果返回Activity</string>
+    <string name="second">用Intent启动有返回结果的Activity</string>
+    <string name="send">发送信息</string>
+    <string name="hint">请输入信息</string>
+</resources>

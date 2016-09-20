@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ListViewTest</string>
+    <string name="introduce">这是一个带多选的listview，由arraryadapter建立。</string>
+</resources>
