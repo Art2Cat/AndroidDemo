@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Admob Test</string>
+
+    <string name="ban_unit_id">ca-app-pub-5043396164425122/8784976891</string>
+    <string name="interstitial_unit_id">ca-app-pub-5043396164425122/1261710090</string>
+    <string name="native_unit_id">ca-app-pub-5043396164425122/4215176497</string>
+
+</resources>

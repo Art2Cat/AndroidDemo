@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/ban_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Display banner AD"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/interstitial_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Display interstitial AD"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/native_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Display native AD"
+        android:textAllCaps="false" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/banner_adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:visibility="gone"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/ban_unit_id" />
+
+        <com.google.android.gms.ads.NativeExpressAdView
+            android:id="@+id/native_adView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            ads:adSize="380x360"
+            ads:adUnitId="@string/native_unit_id" />
+
+    </FrameLayout>
+
+</LinearLayout>
