@@ -1,0 +1,32 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.art2cat.dev.voiceactiontest.MainFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/start_voice_action_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Voice Action"/>
+        <TextView
+            android:id="@+id/display_voice_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/hello_blank_fragment" />
+
+        <TextView
+            android:id="@+id/display_voice_file_path"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment" />
+    </LinearLayout>
+
+
+</FrameLayout>

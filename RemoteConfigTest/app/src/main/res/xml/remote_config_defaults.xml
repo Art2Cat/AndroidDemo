@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- START xml_defaults -->
+<defaultsMap>
+    <entry>
+        <key>default_content</key>
+        <value>default</value>
+    </entry>
+    <entry>
+        <key>default_color</key>
+        <value>-16711681</value>
+    </entry>
+    <entry>
+        <key>default_title</key>
+        <value>春季进阶班</value>
+    </entry>
+</defaultsMap>
+    <!-- END xml_defaults -->
