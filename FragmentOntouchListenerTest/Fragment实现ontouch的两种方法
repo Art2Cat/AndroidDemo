@@ -1,0 +1,60 @@
+Fragment实现ontouch的两种方法
+第一种，在Activity中启动Fragment的时候，向contentView添加setOntouchListener，然后再Fragment中implement OnTouch方法
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.activity_main, null);
+        setContentView(view);
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment = fm.findFragmentById(R.id.activity_main);
+        if (fragment == null) {
+            fragment = new MainFragment();
+            view.setOnTouchListener((MainFragment) fragment);
+            fm.beginTransaction().add(R.id.activity_main, fragment).commit();
+        }
+
+第二种，使用interface来实现
+
+先定义一个接口
+
+public interface MyOnTouchListener {
+        public boolean onTouch(MotionEvent ev);
+    }
+再搞一个list存储listener
+
+private ArrayList<MyOnTouchListener> onTouchListeners = new ArrayList<MyOnTouchListener>(
+            10);
+再自己实现注册，与销毁以及分发
+
+  ／／fragment触摸事件分发，将触摸事件分发给每个能够响应的fragment
+  @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        for (MyOnTouchListener listener : onTouchListeners) {
+            if(listener != null) {
+                listener.onTouch(ev);
+            }
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+    public void registerMyOnTouchListener(MyOnTouchListener myOnTouchListener) {
+        onTouchListeners.add(myOnTouchListener);
+    }
+    public void unregisterMyOnTouchListener(MyOnTouchListener myOnTouchListener) {
+        onTouchListeners.remove(myOnTouchListener) ;
+    }
+    
+那么在fragment中 我们这样使用即可：初始化监听器，然后向activity注册，同时监听器中监听手势动作。
+
+        onTouchListener = new MusicActivity.MyOnTouchListener() {
+            @Override
+            public boolean onTouch(MotionEvent ev) {
+                gestureDetector.onTouchEvent(ev);
+                return false;
+            }
+        };
+        ((MusicActivity) getActivity()).registerMyOnTouchListener(onTouchListener);
+
+
+原文链接：http://www.jianshu.com/p/3b20bce9bdbc
