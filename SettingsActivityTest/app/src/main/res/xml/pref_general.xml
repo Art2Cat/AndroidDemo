@@ -1,0 +1,27 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/pref_app_security">
+        <Preference
+            android:enabled="true"
+            android:key="security_switch"
+            android:title="@string/pref_title_security" />
+        <Preference
+            android:enabled="false"
+            android:key="pin"
+            android:title="@string/pref_app_pin">
+        </Preference>
+        <Preference
+            android:enabled="false"
+            android:key="password"
+            android:title="@string/pref_app_password">
+        </Preference>
+        <Preference
+            android:enabled="false"
+            android:key="pattern"
+            android:title="@string/pref_app_pattern">
+        </Preference>
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
