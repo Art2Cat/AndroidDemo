@@ -38,10 +38,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button button = (Button) findViewById(R.id.button);
         Button button2 = (Button) findViewById(R.id.button2);
         Button button3 = (Button) findViewById(R.id.button3);
+        Button button4 = (Button) findViewById(R.id.button4);
 
         button.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
     }
 
     @Override
@@ -54,7 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ShortcutsUtils.deleteShortcuts(MainActivity.this, mIds);
                 break;
             case R.id.button3:
-                ShortcutsUtils.hideShortcuts(MainActivity.this, mIds);
+                ShortcutsUtils.disableShortcuts(MainActivity.this, mIds);
+                break;
+            case R.id.button4:
+                ShortcutsUtils.enableShortcuts(MainActivity.this, mIds);
                 break;
         }
     }
