@@ -1,5 +1,6 @@
 package com.art2cat.dev.rxjavatest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -55,6 +56,7 @@ public class RxJavaActivity extends AppCompatActivity implements View.OnClickLis
         Button button6 = (Button) findViewById(R.id.button6);
         Button button7 = (Button) findViewById(R.id.button7);
         Button button8 = (Button) findViewById(R.id.button8);
+        Button button9 = (Button) findViewById(R.id.button9);
         LinearLayout activity_rx_java = (LinearLayout) findViewById(R.id.activity_rx_java);
 
         button.setOnClickListener(this);
@@ -65,6 +67,7 @@ public class RxJavaActivity extends AppCompatActivity implements View.OnClickLis
         button6.setOnClickListener(this);
         button7.setOnClickListener(this);
         button8.setOnClickListener(this);
+        button9.setOnClickListener(this);
     }
 
     @Override
@@ -93,6 +96,9 @@ public class RxJavaActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.button8:
                 doOnNext();
+                break;
+            case R.id.button9:
+                startActivity(new Intent(RxJavaActivity.this, MainActivity.class));
                 break;
         }
     }

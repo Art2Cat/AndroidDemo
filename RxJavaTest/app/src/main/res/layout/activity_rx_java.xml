@@ -66,4 +66,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="doonnext" />
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="http request" />
 </LinearLayout>
