@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 animation.start();
                 break;
             case R.id.property_animation:
-
+                startActivity(new Intent(MainActivity.this, PropertyAnimationActivity.class));
                 break;
         }
     }

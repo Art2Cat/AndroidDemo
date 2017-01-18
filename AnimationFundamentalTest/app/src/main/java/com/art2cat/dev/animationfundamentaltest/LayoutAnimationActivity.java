@@ -18,6 +18,7 @@ public class LayoutAnimationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout_animation);
+        setTitle("布局动画");
         initView();
     }
 
