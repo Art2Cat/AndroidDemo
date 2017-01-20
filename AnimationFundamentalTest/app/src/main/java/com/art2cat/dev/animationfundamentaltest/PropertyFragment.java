@@ -140,50 +140,57 @@ public class PropertyFragment extends Fragment implements View.OnClickListener {
                 rotate.start();
                 break;
             case R.id.custom:
-                AnimatorSet animatorSet1 = new AnimatorSet();
-                ObjectAnimator scaleX_java1 = ObjectAnimator.ofFloat(mImageView,
-                        AnimatorConstants.SCALE_X, 1.0f, 2f).setDuration(1000);
-                ObjectAnimator scaleY_java1 = ObjectAnimator.ofFloat(mImageView,
-                        AnimatorConstants.SCALE_Y, 1.0f, 2f).setDuration(1000);
-                scaleX_java1.setRepeatCount(12);
-                scaleX_java1.setRepeatMode(ValueAnimator.REVERSE);
-                scaleY_java1.setRepeatCount(12);
-                scaleY_java1.setRepeatMode(ValueAnimator.REVERSE);
-                ObjectAnimator rotate1 = ObjectAnimator.ofFloat(mImageView,
-                        AnimatorConstants.ROTATION, 0f, 360f).setDuration(2000);
-                rotate1.setRepeatCount(6);
-                PropertyValuesHolder translate1X = PropertyValuesHolder.ofFloat(
-                        AnimatorConstants.TRANSLATION_X, 0f, 300f);
-                PropertyValuesHolder translate1Y = PropertyValuesHolder.ofFloat(
-                        AnimatorConstants.TRANSLATION_Y, 0f, 300f);
-                ObjectAnimator translate_java1 =
-                        ObjectAnimator.ofPropertyValuesHolder(mImageView, translate1X, translate1Y)
-                                .setDuration(1500);
-                animatorSet1.play(rotate1).with(translate_java1).with(scaleX_java1).with(scaleY_java1);
-                ObjectAnimator translate2Y = ObjectAnimator.ofFloat(mImageView,
-                        AnimatorConstants.TRANSLATION_Y, 300f, -300f).setDuration(3000);
-                animatorSet1.play(translate2Y).after(translate_java1);
-                PropertyValuesHolder translate3X = PropertyValuesHolder.ofFloat(
-                        AnimatorConstants.TRANSLATION_X, 300f, -300f);
-                PropertyValuesHolder translate3Y = PropertyValuesHolder.ofFloat(
-                        AnimatorConstants.TRANSLATION_Y, -300f, 300f);
-                ObjectAnimator translate_java2 =
-                        ObjectAnimator.ofPropertyValuesHolder(mImageView, translate3X, translate3Y)
-                                .setDuration(3000);
-                animatorSet1.play(translate_java2).after(translate2Y);
-                ObjectAnimator translate4Y = ObjectAnimator.ofFloat(mImageView,
-                        AnimatorConstants.TRANSLATION_Y, 300f, -300f).setDuration(3000);
-                animatorSet1.play(translate4Y).after(translate_java2);
-                PropertyValuesHolder translate5X = PropertyValuesHolder.ofFloat(
-                        AnimatorConstants.TRANSLATION_X, -300f, 0f);
-                PropertyValuesHolder translate5Y = PropertyValuesHolder.ofFloat(
-                        AnimatorConstants.TRANSLATION_Y, -300f, 0f);
-                ObjectAnimator translate_java3 =
-                        ObjectAnimator.ofPropertyValuesHolder(mImageView, translate5X, translate5Y)
-                                .setDuration(1500);
-                animatorSet1.play(translate_java3).after(translate4Y);
-                animatorSet1.start();
+                playCustomAnimator();
                 break;
         }
+    }
+
+    private void playCustomAnimator() {
+        AnimatorSet custom = new AnimatorSet();
+        ObjectAnimator scaleX = ObjectAnimator.ofFloat(mImageView,
+                AnimatorConstants.SCALE_X, 1.0f, 2f).setDuration(1000);
+        ObjectAnimator scaleY = ObjectAnimator.ofFloat(mImageView,
+                AnimatorConstants.SCALE_Y, 1.0f, 2f).setDuration(1000);
+        scaleX.setRepeatCount(12);
+        scaleX.setRepeatMode(ValueAnimator.REVERSE);
+        scaleY.setRepeatCount(12);
+        scaleY.setRepeatMode(ValueAnimator.REVERSE);
+        ObjectAnimator rotate = ObjectAnimator.ofFloat(mImageView,
+                AnimatorConstants.ROTATION, 0f, 360f).setDuration(2000);
+        rotate.setRepeatCount(6);
+        ObjectAnimator rotate360 = ObjectAnimator.ofFloat(mImageView,
+                AnimatorConstants.ROTATION_X, 0f, 360f).setDuration(2000);
+        rotate360.setRepeatCount(6);
+        PropertyValuesHolder moveRight = PropertyValuesHolder.ofFloat(
+                AnimatorConstants.TRANSLATION_X, 0f, 300f);
+        PropertyValuesHolder moveDown = PropertyValuesHolder.ofFloat(
+                AnimatorConstants.TRANSLATION_Y, 0f, 300f);
+        ObjectAnimator rightDown =
+                ObjectAnimator.ofPropertyValuesHolder(mImageView, moveRight, moveDown)
+                        .setDuration(1500);
+        custom.play(rotate360).with(rotate).with(rightDown).with(scaleX).with(scaleY);
+        ObjectAnimator moveUp = ObjectAnimator.ofFloat(mImageView,
+                AnimatorConstants.TRANSLATION_Y, 300f, -300f).setDuration(3000);
+        custom.play(moveUp).after(rightDown);
+        PropertyValuesHolder moveLeft = PropertyValuesHolder.ofFloat(
+                AnimatorConstants.TRANSLATION_X, 300f, -300f);
+        PropertyValuesHolder moveDown1 = PropertyValuesHolder.ofFloat(
+                AnimatorConstants.TRANSLATION_Y, -300f, 300f);
+        ObjectAnimator leftDown =
+                ObjectAnimator.ofPropertyValuesHolder(mImageView, moveLeft, moveDown1)
+                        .setDuration(3000);
+        custom.play(leftDown).after(moveUp);
+        ObjectAnimator moveUp1 = ObjectAnimator.ofFloat(mImageView,
+                AnimatorConstants.TRANSLATION_Y, 300f, -300f).setDuration(3000);
+        custom.play(moveUp1).after(leftDown);
+        PropertyValuesHolder moveRight1 = PropertyValuesHolder.ofFloat(
+                AnimatorConstants.TRANSLATION_X, -300f, 0f);
+        PropertyValuesHolder moveDown2 = PropertyValuesHolder.ofFloat(
+                AnimatorConstants.TRANSLATION_Y, -300f, 0f);
+        ObjectAnimator translate_java3 =
+                ObjectAnimator.ofPropertyValuesHolder(mImageView, moveRight1, moveDown2)
+                        .setDuration(1500);
+        custom.play(translate_java3).after(moveUp1);
+        custom.start();
     }
 }
